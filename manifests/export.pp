@@ -1,4 +1,4 @@
-class nagios::export {
+class nagios-service::export {
   @@nagios_host { $::fqdn:
     address       => $::ipaddress,
     check_command => 'check-host-alive!3000.0,80%!5000.0,100%!10',

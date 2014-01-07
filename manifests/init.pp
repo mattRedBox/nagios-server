@@ -35,7 +35,7 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class nagios::server {
+class nagios-server {
   package { ["nagios","nagios-plugins","nagios-plugins-nrpe"]:
     ensure => installed,
   }
