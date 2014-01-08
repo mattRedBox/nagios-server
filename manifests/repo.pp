@@ -19,7 +19,7 @@ class nagios-server::repo {
         gpgkey    => "$gpg_file_location",
         gpgcheck  => 1,
         require   => [
-          Package['yum-priorities'],
+          Package['yum-plugin-priorities'],
           File[$gpg_file_location]
         ],
       }
