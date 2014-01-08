@@ -11,14 +11,19 @@ class nagios-server::repo {
   }
   
   Exec { 
-    path => [ '/usr/bin', '/bin',],
+
   }
   ->
   case $operatingsystem {
     'centos' : {
-      exec { "wget http://packages.sw.be/rpmforge-release/$rpm_name -O /tmp/":}
+      exec { "wget http://packages.sw.be/rpmforge-release/$rpm_name -O /tmp/":
+        path => [ '/usr/bin', '/bin',],
+      }
       ->
-      exec { "rpm -Uvh $rpm_name":}
+      exec { "rpm -Uvh $rpm_name":
+        path => [ '/usr/bin', '/bin',],
+      }
+      }
     }
   }
 }
