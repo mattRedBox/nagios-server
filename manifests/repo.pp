@@ -5,6 +5,10 @@ class nagios-server::repo {
     ensure => installed,
   }
 
+  file { "$gpg_file_location" :
+    ensure => present,
+  }
+
   case $operatingsystem {
     'centos' : {
       yumrepo { 'rpmforge-release' :
