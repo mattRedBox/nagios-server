@@ -9,7 +9,11 @@ class nagios-server::repo {
   file { "$gpg_file_location" :
     ensure => present,
   }
-
+  
+  Exec { 
+    path => [ '/usr/bin', '/bin',],
+  }
+  ->
   case $operatingsystem {
     'centos' : {
       exec { "wget http://packages.sw.be/rpmforge-release/$rpm_name -O /tmp/":}
