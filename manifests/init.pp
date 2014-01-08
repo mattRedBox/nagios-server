@@ -36,5 +36,7 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class nagios-server {
+  class {'repo':}
+  ->
   class {'server':}
 }
