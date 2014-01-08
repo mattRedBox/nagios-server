@@ -1,6 +1,10 @@
 class nagios-server::repo {
   $gpg_file_location = "/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6"
 
+  package { 'yum-priorities' :
+    ensure => installed,
+  }
+
   case $operatingsystem {
     'centos' : {
       yumrepo { 'rpmforge-release' :
@@ -8,7 +12,7 @@ class nagios-server::repo {
         priority  => 10,
         timeout   => 60,
         enabled   => 1,
-        gpgkey    => "file://${gpg_file_location}",
+        gpgkey    => "$gpg_file_location",
         gpgcheck  => 1,
         require   => [
           Package['yum-priorities'],
