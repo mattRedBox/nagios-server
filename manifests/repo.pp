@@ -1,7 +1,7 @@
 class nagios-server::repo {
   $gpg_file_location = "/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6"
 
-  package { 'yum-priorities' :
+  package { 'yum-plugin-priorities' :
     ensure => installed,
   }
 
