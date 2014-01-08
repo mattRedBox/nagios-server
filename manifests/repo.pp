@@ -10,10 +10,6 @@ class nagios-server::repo {
     ensure => present,
   }
   
-  Exec { 
-
-  }
-  ->
   case $operatingsystem {
     'centos' : {
       exec { "wget http://packages.sw.be/rpmforge-release/$rpm_name -O /tmp/":
@@ -22,7 +18,6 @@ class nagios-server::repo {
       ->
       exec { "rpm -Uvh $rpm_name":
         path => [ '/usr/bin', '/bin',],
-      }
       }
     }
   }
