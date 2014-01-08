@@ -11,6 +11,7 @@ class nagios-server::server {
 
   # This is because puppet writes the config files so nagios can't read them
   exec {'make-nag-cfg-readable':
+    path    => [ '/usr/bin', '/bin',],
     command => "find /etc/nagios -type f -name '*cfg' | xargs chmod +r",
   }
 

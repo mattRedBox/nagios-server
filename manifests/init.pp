@@ -36,17 +36,5 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class nagios-server {
-  Exec { 
-    path => [
-      '/usr/local/bin',
-      '/opt/local/bin',
-      '/usr/bin',
-      '/usr/sbin',
-      '/bin',
-      '/sbin'], 
-    logoutput => true,
-  }
-  ->
   class {'server':}
-
 }
