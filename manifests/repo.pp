@@ -17,7 +17,7 @@ class nagios-server::repo {
     'CentOS' : {
       case $::operatingsystemmajrelease {
         '6' : {
-          exec { "rpm -Uv http://packages.sw.be/$name_short/$name_long",
+          exec { "rpm -Uv http://packages.sw.be/$name_short/$name_long":
             unless => "/bin/rpm -q --quiet $name_short", 
           } 
         }
