@@ -8,23 +8,12 @@ class nagios-server::server {
     enable     => true,
     hasstatus  => true,
     hasrestart => true,
-    require    => [Package['nagios'],Exec['make-nag-cfg-readable']],
+    require    => [Package['nagios']],
   }
 
-  # This is because puppet writes the config files so nagios can't read them
-  exec {'make-nag-cfg-readable':
-    path    => [ '/usr/bin', '/bin',],
-    command => "find /etc/nagios -type f -name '*cfg' | xargs chmod +r",
-  }
-
-  file { ['/etc/nagios','/etc/nagios/resource-d']:
-    ensure => directory,
-    owner  => 'nagios',
-  }
-  ->
   # Collect the nagios_host resources
   Nagios_host <<||>> {
-    require => File['/etc/nagios','/etc/nagios/resource-d'],
-    notify  => [Exec[make-nag-cfg-readable],Service[nagios]],
+    require => File['/etc/nagios'],
+    notify  => Service[nagios],
   }
 }

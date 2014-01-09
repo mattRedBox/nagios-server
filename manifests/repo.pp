@@ -1,18 +1,24 @@
 class nagios-server::repo {
-  $rpm_name = "rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm"
+  include defaults
+  $name_short = "rpmforge-release"
+  $name_long = "rpmforge-release-0.5.2-2.el6.rf.x86_64.rpm"
 
   package { 'yum-plugin-priorities' :
     ensure => installed,
   }
 
-  case $operatingsystem {
+  case $::operatingsystem {
     'centos' : {
-      exec { "wget http://packages.sw.be/rpmforge-release/$rpm_name -O /tmp/$rpm_name":
-        path => [ '/usr/bin', '/bin',],
-      }
-      ->
-      exec { "rpm -Uvh /tmp/$rpm_name":
-        path => [ '/usr/bin', '/bin',],
+      case $::operatingsystemrelease {
+        /^6.*$/ : {
+          exec { [
+            "wget http://packages.sw.be/$name_short/$name_long -O /tmp/$name_long",
+            "rpm -Uvh /tmp/$name_long",
+            "rm -Rf /tmp/$name_long"
+            ]:
+            unless => "rpm -q --quiet $name_short", 
+          } 
+        }
       }
     }
   }
