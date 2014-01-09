@@ -13,7 +13,6 @@ class nagios-server::server {
 
   # Collect the nagios_host resources
   Nagios_host <<||>> {
-    require => File['/etc/nagios'],
     notify  => Service[nagios],
   }
 }

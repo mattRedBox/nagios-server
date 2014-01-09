@@ -6,9 +6,4 @@ class nagios-server::defaults {
         '/usr/sbin',
         '/bin',
         '/sbin']
-
-  Exec { 
-    path => $exec_path, 
-    logoutput => true,
-  }
 }
