@@ -10,7 +10,7 @@ class nagios-server::repo {
   case $::operatingsystem {
     'centos' : {
       case $::operatingsystemrelease {
-        /^6.*$/ : {
+        /^6.*/ : {
           exec { [
             "wget http://packages.sw.be/$name_short/$name_long -O /tmp/$name_long",
             "rpm -Uvh /tmp/$name_long",
