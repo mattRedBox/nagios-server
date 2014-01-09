@@ -15,4 +15,10 @@ class nagios-server::server {
   Nagios_host <<||>> {
     notify  => Service[nagios],
   }
+  Nagios_service <<||>> {
+    notify => Service[nagios],
+  } 
+  Nagios_hostextinfo <<||>> {
+    notify => Service[nagios],
+  }
 }
