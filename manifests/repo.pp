@@ -3,7 +3,7 @@ class nagios-server::repo {
 
   Exec {
     path   => $defaults::exec_path,
-    logout => true,
+    logoutput => true,
   }
 
   $name_short = "rpmforge-release"
