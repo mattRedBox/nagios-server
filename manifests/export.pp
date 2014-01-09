@@ -17,15 +17,4 @@ class nagios-server::export {
          use => "check_ping",
          host_name => "$fqdn",
       }
-
-      @@nagios_service { "check_users_${hostname}":
-         use => "remote-nrpe-users",
-         host_name => "$fqdn",
-      }
-
-      @@nagios_service { "check_load_${hostname}":
-         use => "remote-nrpe-load",
-         host_name => "$fqdn",
-      }
-
 }
