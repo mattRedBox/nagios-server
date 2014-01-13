@@ -9,7 +9,7 @@ class nagios-server::server {
     owner  => 'nagios',
   }
   ->
-  file_line { 'resource.d'
+  file_line { 'resource.d':
     path => "$defaults::config_dir/nagios.cfg",
     line => "cfg_dir=$defaults::resource_dir",
   }
