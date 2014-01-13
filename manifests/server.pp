@@ -3,6 +3,17 @@ class nagios-server::server {
     ensure => installed,
   }
 
+  file { 'resource.d':
+    path   => "$defaults::resource_dir",
+    ensure => directory,
+    owner  => 'nagios',
+  }
+  ->
+  file_line { 'resource.d'
+    path => "$defaults::config_dir/nagios.cfg",
+    line => "cfg_dir=$defaults::resource_dir",
+  }
+  ->
   service { nagios:
     ensure     => running,
     enable     => true,

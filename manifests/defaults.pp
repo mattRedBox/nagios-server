@@ -6,4 +6,7 @@ class nagios-server::defaults {
         '/usr/sbin',
         '/bin',
         '/sbin']
+
+  $config_dir = '/etc/nagios'
+  $resource_dir = "$config_dir/resource.d"
 }
