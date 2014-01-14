@@ -22,6 +22,13 @@ class nagios-server::server {
   }
   ->
   # Collect the nagios_host resources
+  File <<||>> {
+    notify => Service[nagios],
+  }
+  ->
+  File_line <<||>> {
+    notify => Service[nagios],
+  }
   Nagios_host <<||>> {
     notify  => Service[nagios],
   }
