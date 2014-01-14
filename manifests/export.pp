@@ -8,7 +8,7 @@ class nagios-server::export {
          address => $ipaddress,
          use     => 'linux-server',
          target  => "$defaults::resource_dir/host/${::fqdn}.cfg",
-         require => Export_resource[$::fqdn, 'host'],
+         require => Export_resource["$::fqdn", 'host'],
       }
       
       @@nagios_hostextinfo { $::fqdn:
@@ -17,14 +17,14 @@ class nagios-server::export {
          icon_image => "base/$operatingsystem.png",
          statusmap_image => "base/$operatingsystem.gd2",
          target  => "$defaults::resource_dir/hostextinfo/${::fqdn}.cfg",
-         require => Export_resource[$::fqdn, 'hostextinfo'],
+         require => Export_resource["$::fqdn", 'hostextinfo'],
       }
 
       @@nagios_service { "${::fqdn}-check_ping":
          use => 'local-service',
          host_name => $::fqdn,
          target  => "$defaults::resource_dir/check_ping/${::fqdn}.cfg",
-         require => Export_resource[$::fqdn, 'check_ping'],
+         require => Export_resource["$::fqdn", 'check_ping'],
       }
 
 }
