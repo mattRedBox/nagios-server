@@ -1,4 +1,6 @@
 class nagios-server::export {
+    
+  include nagios-server::defaults
 
       file_line { 'add_resource_dir':
           path => "$config_dir/nagios.cfg",
