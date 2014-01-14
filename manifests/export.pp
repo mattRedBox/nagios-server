@@ -1,7 +1,6 @@
 class nagios-server::export {
     
   include nagios-server::defaults
-  include nagios-server::resource
   
     @@nagios_host { $::fqdn:
          ensure  => present,
@@ -9,7 +8,7 @@ class nagios-server::export {
          address => $ipaddress,
          use     => 'linux-server',
          target  => "$defaults::resource_dir/host/${::fqdn}.cfg",
-         require => "Nagios-server::Resource[${::fqdn}, 'host']",
+         require => "Resource[${::fqdn}, 'host']",
       }
       
       @@nagios_hostextinfo { $::fqdn:
@@ -18,14 +17,14 @@ class nagios-server::export {
          icon_image => "base/$operatingsystem.png",
          statusmap_image => "base/$operatingsystem.gd2",
          target  => "$defaults::resource_dir/hostextinfo/${::fqdn}.cfg",
-         require => "Nagios-server::Resource[${::fqdn}, 'hostextinfo']",
+         require => "Resource[${::fqdn}, 'hostextinfo']",
       }
 
       @@nagios_service { "${::fqdn}-check_ping":
          use => 'local-service',
          host_name => $::fqdn,
          target  => "$defaults::resource_dir/check_ping/${::fqdn}.cfg",
-         require => "Nagios-server::Resource[${::fqdn}, 'check_ping']",
+         require => "Resource[${::fqdn}, 'check_ping']",
       }
 
 }
