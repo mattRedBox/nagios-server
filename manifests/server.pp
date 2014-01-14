@@ -21,14 +21,16 @@ class nagios-server::server {
     hasrestart => true,
     require    => [Package['nagios']],
   }
-
+  ->
   # Collect the nagios_host resources
   Nagios_host <<||>> {
     notify  => Service[nagios],
   }
+  ->
   Nagios_service <<||>> {
     notify => Service[nagios],
-  } 
+  }
+  ->
   Nagios_hostextinfo <<||>> {
     notify => Service[nagios],
   }
