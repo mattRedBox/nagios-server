@@ -1,4 +1,4 @@
-define nagios-server::resource($host_name, $resource) {
+define nagios-server::export_resource($host_name, $resource) {
   include nagios-server::defaults
   
   @@file { "${host_name}_${resource}":
