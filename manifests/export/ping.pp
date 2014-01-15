@@ -3,7 +3,7 @@ class nagios-server::export::ping {
   include nagios-server::defaults
   include nagios-server::export::file
 
-  export_file('check_ping')
+  export_file{'check_ping':}
   ->
   @@nagios_service { "${::fqdn}-check_ping":
     use => 'check_ping',

@@ -3,7 +3,7 @@ class nagios-server::export::host {
   include nagios-server::defaults
   include nagios-server::export::file
 
-  export_file('host')
+  export_file{'host':}
   ->
   @@nagios_host { $::fqdn:
     ensure  => present,
