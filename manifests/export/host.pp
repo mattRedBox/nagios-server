@@ -1,4 +1,4 @@
-class nagios-server::export:host {
+class nagios-server::export::host {
     
   include nagios-server::defaults
   include nagios-server::export::file
