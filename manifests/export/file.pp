@@ -1,4 +1,4 @@
-define nagios-server::export_file($exported_resource) {
+define nagios-server::export::file($exported_resource) {
   include nagios-server::defaults
   
   @@file { "${::fqdn}_${exported_resource}":
