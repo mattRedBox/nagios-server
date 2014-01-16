@@ -22,22 +22,15 @@ class nagios-server::server {
   }
   ->
   # Collect the nagios_host resources
-  Nagios-client::Export::File::File <<||>> {
-    notify => Service[nagios],
-  }
-  ->
-  Nagios-client::Export::File::File_line <<||>> {
-    notify => Service[nagios],
-  }
- Nagios-client::Export::Host::Nagios_host <<||>> {
+  Nagios_host <<||>> {
     notify  => Service[nagios],
   }
   ->
- Nagios-client::Export::Ping::Nagios_service <<||>> {
+  Nagios_service <<||>> {
     notify => Service[nagios],
   }
   ->
- Nagios-client::Export::Hostextinfo::Nagios_hostextinfo <<||>> {
+  Nagios_hostextinfo <<||>> {
     notify => Service[nagios],
   }
 }
