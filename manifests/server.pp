@@ -31,6 +31,14 @@ class nagios-server::server {
     notify => Service[nagios],
   }
   ->
+  file { 'resource.d_post':
+    path    => "$defaults::resource_dir",
+    ensure  => directory,
+    recurse => true,
+    owner   => 'nagios',
+    group   => 'nagios',
+  }
+  ->
   # Collect the nagios_host resources
   Nagios_host <<||>> {
     notify  => Service[nagios],
