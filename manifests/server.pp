@@ -34,12 +34,13 @@ class nagios-server::server {
     notify  => Service[nagios],
   }
   ->
+  Nagios_hostextinfo <<||>> {
+    notify => Service[nagios],
+  }
+  ->
   Nagios_service <<||>> {
     notify => Service[nagios],
   }
   ->
-  Nagios_hostextinfo <<||>> {
-    notify => Service[nagios],
-  }
 
 }
