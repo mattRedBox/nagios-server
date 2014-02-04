@@ -33,4 +33,12 @@ class nagios-server::server {
   Nagios_hostextinfo <<||>> {
     notify => Service[nagios],
   }
+  ->
+  File <<||>> {
+    notify => Service[nagios],
+  }
+  ->
+  File_line <<||>> {
+    notify => Service[nagios],
+  }
 }
