@@ -11,9 +11,11 @@ class nagios-server::server {
   }
 
   file { 'resource.d':
-    path   => "$defaults::resource_dir",
-    ensure => directory,
-    owner  => 'nagios',
+    path    => "$defaults::resource_dir",
+    ensure  => directory,
+    recurse => true,
+    owner   => 'nagios',
+    group   => 'nagios',
   }
   ->
   file_line { 'resource.d':
