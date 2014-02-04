@@ -41,6 +41,5 @@ class nagios-server::server {
   Nagios_service <<||>> {
     notify => Service[nagios],
   }
-  ->
 
 }
