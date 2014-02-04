@@ -21,6 +21,14 @@ class nagios-server::server {
     line => "cfg_dir=$defaults::resource_dir",
   }
   ->
+  File <<||>> {
+    notify => Service[nagios],
+  }
+  ->
+  File_line <<||>> {
+    notify => Service[nagios],
+  }
+  ->
   # Collect the nagios_host resources
   Nagios_host <<||>> {
     notify  => Service[nagios],
@@ -33,12 +41,5 @@ class nagios-server::server {
   Nagios_hostextinfo <<||>> {
     notify => Service[nagios],
   }
-  ->
-  File <<||>> {
-    notify => Service[nagios],
-  }
-  ->
-  File_line <<||>> {
-    notify => Service[nagios],
-  }
+
 }
